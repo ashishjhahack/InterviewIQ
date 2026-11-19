@@ -1,0 +1,58 @@
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import ProtectedRoute from "./components/ProtectedRoute"
+
+import PublicLayout from "./layouts/PublicLayout";
+import DashboardLayout from "./layouts/DashboardLayout";
+import InterviewLayout from "./layouts/InterviewLayout";
+
+import Landing from "./pages/Landing";
+import Auth from "./pages/Auth";
+import Dashboard from "./pages/Dashboard";
+import Resume from "./pages/Resume";
+import Interview from "./pages/Interview";
+import Reports from "./pages/Reports";
+import Companies from "./pages/Companies";
+import Community from "./pages/Community";
+import Profile from "./pages/Profile";
+import Settings from "./pages/Settings";
+import InterviewSession from "./pages/InterviewSession";
+import Navbar from "./components/Navbar";
+import InterviewReport from "./pages/InterviewReport";
+
+function App() {
+  return (
+    <div>
+      <BrowserRouter>
+        <Routes>
+          {/* public pages */}
+          <Route element={<PublicLayout />}>
+            <Route path="/" element={<Landing />} />
+            <Route path="/login" element={<Auth />} />
+            <Route path="/signup" element={<Auth />} />
+            <Route path="/companies" element={<Companies />} />
+            <Route path="/community" element={<Community />} />
+          </Route>
+
+          {/* Dashboard pages */}
+          <Route element={<ProtectedRoute> <DashboardLayout /> </ProtectedRoute>}>
+            <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/resume" element={<Resume />} />
+            <Route path="/reports" element={<Reports />} />
+            <Route path="/profile" element={<Profile />} />
+            <Route path="/settings" element={<Settings />} />
+            <Route path="/interview" element={<Interview />} />
+          </Route>
+
+          {/* Interview page */}
+          <Route element={ <ProtectedRoute> <InterviewLayout /> </ProtectedRoute> }>
+            
+            <Route path="/interviews/:id" element={<InterviewSession />} />
+            <Route path="/interviews/:id/report" element={<InterviewReport />}/>
+          </Route>
+        </Routes>
+      </BrowserRouter>
+    </div>
+  );
+}
+
+export default App;
