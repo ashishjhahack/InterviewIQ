@@ -16,7 +16,7 @@ app.use(
   cors({
     origin: [
       "http://localhost:5173",
-      "https://interview-iq-frontend-dusky.vercel.app/",
+      "https://interview-iq-frontend-dusky.vercel.app",
     ],
     credentials: true,
   }),
