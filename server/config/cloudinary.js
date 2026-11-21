@@ -8,14 +8,14 @@ cloudinary.config({
 });
 
 // Temporary Cloudinary authentication test
-try {
-  const result = await cloudinary.api.ping();
-  console.log("Cloudinary ping successful:", result);
-} catch (error) {
-  console.error("Cloudinary ping failed:", {
-    message: error.message,
-    http_code: error.http_code,
-  });
-}
+// try {
+//   const result = await cloudinary.api.ping();
+//   console.log("Cloudinary ping successful:", result);
+// } catch (error) {
+//   console.error("Cloudinary ping failed:", {
+//     message: error.message,
+//     http_code: error.http_code,
+//   });
+// }
 
 export default cloudinary;
